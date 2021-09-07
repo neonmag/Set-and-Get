@@ -2,9 +2,9 @@
 
 using namespace std;
 
-class Student
+class Student // Объявление класса
 {
-	char* number;
+	char* number; // Создание полей класса
 	char* city;
 	char* country;
 	char* name;
@@ -13,8 +13,9 @@ class Student
 	char* birthday;
 	char* group;
 	char* university;
+	static int counter;
 public:
-	Student()
+	Student() // Constructor by default
 	{
 		this->number = nullptr;
 		this->city = nullptr;
@@ -25,8 +26,11 @@ public:
 		this->birthday = nullptr;
 		this->group = nullptr;
 		this->university = nullptr;
+		counter++;
 	}
-	Student(const char* number, const char* city, const char* country, const char* name, const char* surname, const char* fathername, const char* birthday, const char* group, const char* university)
+	Student(const char* number, const char* city,
+			const char* country, const char* name, const char* surname, const char* fathername,
+			const char* birthday, const char* group, const char* university) // Constructor
 	{
 		this->number = new char[strlen(number) + 1];
 		strcpy_s(this->number, strlen(number) + 1, number);
@@ -46,8 +50,9 @@ public:
 		strcpy_s(this->group, strlen(group) + 1, group);
 		this->university = new char[strlen(university) + 1];
 		strcpy_s(this->university, strlen(university) + 1, university);
+		counter++;
 	}
-	void Input()
+	void Input() // Метод для ввода данных в поля класса вручную с указателем this
 	{
 		this->number = new char[20];
 		cout << "\nEnter your number: ";
@@ -77,7 +82,7 @@ public:
 		cout << "\nEnter your university: ";
 		cin.getline(this->university, 19);
 	}
-	void Print()
+	void Print() // Метод вывода полей с указателем this
 	{
 		cout << "\n\nName: " << this->name;
 		cout << "\nSurname: " << this->surname;
@@ -89,7 +94,12 @@ public:
 		cout << "\nGroup: " << this->group;
 		cout << "\nUniversity: " << this->university << endl;
 	}
-	char* GetName()
+	static int GetCounter() // Статический метод для работы со статическим полем
+	{
+		cout << "Counter = " << counter << endl;
+		return counter;
+	}
+	const char* GetName() // Методы set and get
 	{
 		return this->name;
 	}
@@ -102,7 +112,7 @@ public:
 		this->name = new char[strlen(name) + 1];
 		strcpy_s(this->name, strlen(name) + 1, name);
 	}
-	char* GetSurname()
+	const char* GetSurname()
 	{
 		return this->surname;
 	}
@@ -115,7 +125,7 @@ public:
 		this->surname = new char[strlen(surname) + 1];
 		strcpy_s(this->surname, strlen(surname) + 1, surname);
 	}
-	char* GetFathername()
+	const char* GetFathername()
 	{
 		return this->fathername;
 	}
@@ -128,11 +138,11 @@ public:
 		this->fathername = new char[strlen(fathername) + 1];
 		strcpy_s(this->fathername, strlen(fathername) + 1, fathername);
 	}
-	char* GetNumber()
+	const char* GetNumber()
 	{
 		return this->number;
 	}
-	char* SetNumber(const char* number)
+	void SetNumber(const char* number)
 	{
 		if (this->number != nullptr)
 		{
@@ -141,11 +151,11 @@ public:
 		this->number = new char[strlen(number) + 1];
 		strcpy_s(this->fathername, strlen(fathername) + 1, fathername);
 	}
-	char* GetBirthday()
+	const char* GetBirthday()
 	{
 		return this->birthday;
 	}
-	char* SetBirthday(const char* birthday)
+	void SetBirthday(const char* birthday)
 	{
 		if (this->birthday != nullptr)
 		{
@@ -154,11 +164,11 @@ public:
 		this->birthday = new char[strlen(birthday) + 1];
 		strcpy_s(this->birthday, strlen(birthday) + 1, birthday);
 	}
-	char* GetCity()
+	const char* GetCity()
 	{
 		return this->city;
 	}
-	char* SetCity(const char* city)
+	void SetCity(const char* city)
 	{
 		if (this->university != nullptr)
 		{
@@ -167,11 +177,11 @@ public:
 		this->city = new char[strlen(city) + 1];
 		strcpy_s(this->city, strlen(city) + 1, city);
 	}
-	char* GetCountry()
+	const char* GetCountry()
 	{
 		return this->country;
 	}
-	char* SetCountry(const char* country)
+	void SetCountry(const char* country)
 	{
 		if (this->country != nullptr)
 		{
@@ -180,11 +190,11 @@ public:
 		this->country = new char[strlen(country) + 1];
 		strcpy_s(this->country, strlen(country) + 1, country);
 	}
-	char* GetGroup()
+	const char* GetGroup()
 	{
 		return this->group;
 	}
-	char* SetGroup(const char* group)
+	void SetGroup(const char* group)
 	{
 		if (this->group != nullptr)
 		{
@@ -193,11 +203,11 @@ public:
 		this->group = new char[strlen(group) + 1];
 		strcpy_s(this->group, strlen(group) + 1, group);
 	}
-	char* GetUniversity()
+	const char* GetUniversity()
 	{
 		return this->university;
 	}
-	char* SetUniversity(const char* university)
+	void SetUniversity(const char* university)
 	{
 		if (this->university != nullptr)
 		{
@@ -206,9 +216,9 @@ public:
 		this->university = new char[strlen(university) + 1];
 		strcpy_s(this->university, strlen(university) + 1, university);
 	}
-	~Student()
+	~Student() // Destructor
 	{
-		delete[]this->name;
+		delete[]this->name; // Освобождение памяти
 		this->name = nullptr;
 		delete[]this->surname;
 		this->surname = nullptr;
@@ -226,14 +236,20 @@ public:
 		this->university = nullptr;
 		delete[]this->number;
 		this->number = nullptr;
+		counter--;
 	}
 };
 
+int Student::counter = 0; // Инициализация static поля
+
 int main()
 {
-	Student student1;
-	student1.Input();
-	student1.Print();
-	student1.SetName("Boris");
-	cout << student1.GetName() << endl;
+	Student::GetCounter(); // Вызов static method
+	cout << endl;
+	Student student1; // Инициализация объекта класса
+	student1.Input(); // Вызов метода ввода
+	student1.Print(); // Вызов метода вывода
+	student1.SetName("Boris"); // Вызов метода Set для поля name
+	cout << student1.GetName() << endl; // Вывод метода Get для поля name
+	cout << "Counter = " << student1.GetCounter() << endl; // вывод static method
 }
