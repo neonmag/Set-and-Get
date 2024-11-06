@@ -2,9 +2,9 @@
 
 using namespace std;
 
-class Student // Объявление класса
+class Student // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 {
-	char* number; // Создание полей класса
+	char* number; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 	char* city;
 	char* country;
 	char* name;
@@ -17,6 +17,7 @@ class Student // Объявление класса
 public:
 	Student() // Constructor by default
 	{
+		cout << "Student constructor\n";
 		this->number = nullptr;
 		this->city = nullptr;
 		this->country = nullptr;
@@ -52,7 +53,7 @@ public:
 		strcpy_s(this->university, strlen(university) + 1, university);
 		counter++;
 	}
-	void Input() // Метод для ввода данных в поля класса вручную с указателем this
+	void Input() // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ this
 	{
 		this->number = new char[20];
 		cout << "\nEnter your number: ";
@@ -82,7 +83,7 @@ public:
 		cout << "\nEnter your university: ";
 		cin.getline(this->university, 19);
 	}
-	void Print() // Метод вывода полей с указателем this
+	void Print() // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ this
 	{
 		cout << "\n\nName: " << this->name;
 		cout << "\nSurname: " << this->surname;
@@ -94,12 +95,12 @@ public:
 		cout << "\nGroup: " << this->group;
 		cout << "\nUniversity: " << this->university << endl;
 	}
-	static int GetCounter() // Статический метод для работы со статическим полем
+	static int GetCounter() // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
 	{
 		cout << "Counter = " << counter << endl;
 		return counter;
 	}
-	const char* GetName() // Методы set and get
+	const char* GetName() // пїЅпїЅпїЅпїЅпїЅпїЅ set and get
 	{
 		return this->name;
 	}
@@ -218,7 +219,7 @@ public:
 	}
 	~Student() // Destructor
 	{
-		delete[]this->name; // Освобождение памяти
+		delete[]this->name; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
 		this->name = nullptr;
 		delete[]this->surname;
 		this->surname = nullptr;
@@ -240,16 +241,16 @@ public:
 	}
 };
 
-int Student::counter = 0; // Инициализация static поля
+int Student::counter = 0; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ static пїЅпїЅпїЅпїЅ
 
 int main()
 {
-	Student::GetCounter(); // Вызов static method
+	Student::GetCounter(); // пїЅпїЅпїЅпїЅпїЅ static method
 	cout << endl;
-	Student student1; // Инициализация объекта класса
-	student1.Input(); // Вызов метода ввода
-	student1.Print(); // Вызов метода вывода
-	student1.SetName("Boris"); // Вызов метода Set для поля name
-	cout << student1.GetName() << endl; // Вывод метода Get для поля name
-	cout << "Counter = " << student1.GetCounter() << endl; // вывод static method
+	Student student1; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	student1.Input(); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ
+	student1.Print(); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+	student1.SetName("Boris"); // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Set пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ name
+	cout << student1.GetName() << endl; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ Get пїЅпїЅпїЅ пїЅпїЅпїЅпїЅ name
+	cout << "Counter = " << student1.GetCounter() << endl; // пїЅпїЅпїЅпїЅпїЅ static method
 }
